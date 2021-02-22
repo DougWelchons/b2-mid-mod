@@ -1,0 +1,18 @@
+<h1>Name: <%= @mechanic.name %></h1>
+<p>Years of experience: <%= @mechanic.years_experience %></p>
+
+<section class="rides">
+<% @mechanic.sorted_open_rides.each do |ride| %>
+<section id="ride_<%=ride.id%>">
+<p>Name: <%= ride.name %></p>
+<p>Thrill rating: <%= ride.thrill_rating %></p>
+</section> <%end%>
+</section>
+
+<section class="add_ride">
+  <p><%= form_with url: "/mechanics/#{@mechanic.id}", method: :post, local: true do |form| %>
+    <%= form.label "ride ID:" %>
+    <%= form.text_field :ride_id %>
+    <%= form.submit :submit %>
+  <%end%></p>
+</section>
